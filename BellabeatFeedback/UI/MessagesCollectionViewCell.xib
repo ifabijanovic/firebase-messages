@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="messageCell" id="gTV-IL-0wX" customClass="MessagesCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="92"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="600" height="92"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qm6-yf-74u">
+                        <rect key="frame" x="550" y="10" width="40" height="25"/>
+                        <animations/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="8w2-fJ-XTN"/>
+                            <constraint firstAttribute="height" constant="25" id="DA7-rB-wcJ"/>
+                        </constraints>
+                        <state key="normal" title="Up"/>
+                        <connections>
+                            <action selector="upTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="UgK-nc-TmG"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uwJ-9J-Ygw">
+                        <rect key="frame" x="550" y="55" width="40" height="25"/>
+                        <animations/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="Hem-1n-3YX"/>
+                            <constraint firstAttribute="height" constant="25" id="VmZ-oe-xvT"/>
+                        </constraints>
+                        <state key="normal" title="Down"/>
+                        <connections>
+                            <action selector="downTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="XD2-Lo-J25"/>
+                        </connections>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ny-Ce-og4">
+                        <rect key="frame" x="550" y="35" width="40" height="21"/>
+                        <animations/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="EqQ-Bl-uts"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timestamp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SGw-gr-38c">
+                        <rect key="frame" x="10" y="64" width="530" height="17"/>
+                        <animations/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="phG-6P-eCx">
+                        <rect key="frame" x="10" y="91" width="580" height="1"/>
+                        <animations/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="n58-7x-WFn"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Text" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ucl-6o-GrR">
+                        <rect key="frame" x="10" y="10" width="530" height="18"/>
+                        <animations/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <animations/>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <animations/>
+            <constraints>
+                <constraint firstItem="Qm6-yf-74u" firstAttribute="leading" secondItem="ucl-6o-GrR" secondAttribute="trailing" constant="10" id="0Ve-TK-QIc"/>
+                <constraint firstAttribute="trailing" secondItem="uwJ-9J-Ygw" secondAttribute="trailing" constant="10" id="2Ix-vQ-guF"/>
+                <constraint firstItem="phG-6P-eCx" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="3dw-z9-mxc"/>
+                <constraint firstAttribute="bottom" secondItem="SGw-gr-38c" secondAttribute="bottom" constant="10" id="49F-Mz-kTg"/>
+                <constraint firstAttribute="bottom" secondItem="ucl-6o-GrR" secondAttribute="bottom" constant="10" id="G3b-cc-u8Z"/>
+                <constraint firstItem="uwJ-9J-Ygw" firstAttribute="top" secondItem="1ny-Ce-og4" secondAttribute="bottom" id="J13-gN-PT5"/>
+                <constraint firstItem="SGw-gr-38c" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="Kaf-vD-raF"/>
+                <constraint firstItem="ucl-6o-GrR" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="Nem-Vz-Xbz"/>
+                <constraint firstItem="1ny-Ce-og4" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="OzN-Ub-mgx"/>
+                <constraint firstItem="uwJ-9J-Ygw" firstAttribute="top" secondItem="ucl-6o-GrR" secondAttribute="bottom" id="SQp-gW-yyh"/>
+                <constraint firstItem="1ny-Ce-og4" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="UQg-G9-qOW"/>
+                <constraint firstAttribute="bottom" secondItem="phG-6P-eCx" secondAttribute="bottom" id="VIO-qx-TOZ"/>
+                <constraint firstItem="Qm6-yf-74u" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="XPu-NE-5Cx"/>
+                <constraint firstItem="ucl-6o-GrR" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="YLr-tn-fGL"/>
+                <constraint firstItem="Qm6-yf-74u" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="aaZ-MJ-rdc"/>
+                <constraint firstItem="phG-6P-eCx" firstAttribute="top" secondItem="SGw-gr-38c" secondAttribute="bottom" constant="10" id="cyx-q4-xBs"/>
+                <constraint firstItem="1ny-Ce-og4" firstAttribute="top" secondItem="Qm6-yf-74u" secondAttribute="bottom" id="drx-yV-ivM"/>
+                <constraint firstItem="SGw-gr-38c" firstAttribute="top" secondItem="ucl-6o-GrR" secondAttribute="bottom" constant="10" id="eht-zH-afw"/>
+                <constraint firstItem="SGw-gr-38c" firstAttribute="top" secondItem="ucl-6o-GrR" secondAttribute="bottom" constant="10" id="hHx-wU-h9k"/>
+                <constraint firstAttribute="trailing" secondItem="phG-6P-eCx" secondAttribute="trailing" constant="10" id="hcc-j8-JKB"/>
+                <constraint firstAttribute="trailing" secondItem="1ny-Ce-og4" secondAttribute="trailing" constant="10" id="kEM-yc-zPX"/>
+                <constraint firstAttribute="trailing" secondItem="Qm6-yf-74u" secondAttribute="trailing" constant="10" id="t3m-NQ-7Zd"/>
+                <constraint firstItem="uwJ-9J-Ygw" firstAttribute="leading" secondItem="SGw-gr-38c" secondAttribute="trailing" constant="10" id="vIz-B0-FNh"/>
+            </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="G3b-cc-u8Z"/>
+                    <exclude reference="49F-Mz-kTg"/>
+                    <exclude reference="eht-zH-afw"/>
+                    <exclude reference="hHx-wU-h9k"/>
+                    <exclude reference="XPu-NE-5Cx"/>
+                    <exclude reference="OzN-Ub-mgx"/>
+                    <exclude reference="UQg-G9-qOW"/>
+                    <exclude reference="SQp-gW-yyh"/>
+                </mask>
+            </variation>
+            <connections>
+                <outlet property="downvoteButton" destination="uwJ-9J-Ygw" id="dcV-oL-hfD"/>
+                <outlet property="messagePointsLabel" destination="1ny-Ce-og4" id="jbp-WH-Ber"/>
+                <outlet property="messageTextLabel" destination="ucl-6o-GrR" id="A9d-ZP-98l"/>
+                <outlet property="messageTimestampLabel" destination="SGw-gr-38c" id="csC-km-tA7"/>
+                <outlet property="upvoteButton" destination="Qm6-yf-74u" id="qF8-Al-YYB"/>
+            </connections>
+        </collectionViewCell>
+    </objects>
+</document>
