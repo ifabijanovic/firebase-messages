@@ -10,8 +10,6 @@
 
 @class MessageDataStore;
 
-#define kMessageDidChangeNotification @"kMessageDidChangeNotification"
-
 @interface MessageModel : NSObject
 
 @property (nonatomic, copy) NSString *key;

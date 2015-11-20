@@ -7,7 +7,15 @@
 //
 
 #import "RoomsCollectionViewCell.h"
+#import "RoomModel.h"
+#import <ReactiveCocoa/ReactiveCocoa.h>
 
 @implementation RoomsCollectionViewCell
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    
+    RAC(self, roomTitleLabel.text) = RACObserve(self, room.name);
+}
 
 @end

@@ -20,6 +20,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *upvoteButton;
 @property (weak, nonatomic) IBOutlet UIButton *downvoteButton;
 
-- (void)setMessage:(MessageModel *)message;
+@property (nonatomic, strong) MessageModel *message;
 
 @end

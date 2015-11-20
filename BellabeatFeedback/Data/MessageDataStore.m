@@ -53,8 +53,6 @@
                 MessageModel *model = [weakSelf.data objectForKey:snapshot.key];
                 [model updateWithDictionary:snapshot.value];
                 
-                [[NSNotificationCenter defaultCenter] postNotificationName:kMessageDidChangeNotification object:model];
-                
                 if ([weakSelf.delegate respondsToSelector:@selector(messageDataStore:didUpdateMessage:)]) {
                     [weakSelf.delegate messageDataStore:weakSelf didUpdateMessage:model];
                 }

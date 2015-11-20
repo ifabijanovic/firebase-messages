@@ -21,9 +21,6 @@
                             <constraint firstAttribute="height" constant="25" id="DA7-rB-wcJ"/>
                         </constraints>
                         <state key="normal" title="Up"/>
-                        <connections>
-                            <action selector="upTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="UgK-nc-TmG"/>
-                        </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uwJ-9J-Ygw">
                         <rect key="frame" x="550" y="55" width="40" height="25"/>
@@ -33,9 +30,6 @@
                             <constraint firstAttribute="height" constant="25" id="VmZ-oe-xvT"/>
                         </constraints>
                         <state key="normal" title="Down"/>
-                        <connections>
-                            <action selector="downTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="XD2-Lo-J25"/>
-                        </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ny-Ce-og4">
                         <rect key="frame" x="550" y="35" width="40" height="21"/>

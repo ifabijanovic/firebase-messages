@@ -79,10 +79,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     RoomsCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kRoomCellIdentifier forIndexPath:indexPath];
-    
-    RoomModel *model = [self.dataStore.allRooms objectAtIndex:indexPath.row];
-    cell.roomTitleLabel.text = model.name;
-    
+    cell.room = [self.dataStore.allRooms objectAtIndex:indexPath.row];
     return cell;
 }
 

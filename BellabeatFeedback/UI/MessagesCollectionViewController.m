@@ -104,10 +104,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     MessagesCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kMessageCellIdentifier forIndexPath:indexPath];
-    
-    MessageModel *model = [self.data objectAtIndex:indexPath.row];
-    [cell setMessage:model];
-    
+    cell.message = [self.data objectAtIndex:indexPath.row];
     return cell;
 }
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		74C7DFD1625A46C47A48C89A /* Pods_BellabeatFeedback.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62254FB879A1DC76902A918F /* Pods_BellabeatFeedback.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		811F33661BFE14AE00DE9402 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 811F33651BFE14AE00DE9402 /* main.m */; };
 		811F33691BFE14AE00DE9402 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 811F33681BFE14AE00DE9402 /* AppDelegate.m */; };
 		811F33711BFE14AE00DE9402 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 811F33701BFE14AE00DE9402 /* Assets.xcassets */; };
@@ -25,13 +26,12 @@
 		81F015C91BFF2CCF0007EB4A /* MessagesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81F015C71BFF2CCF0007EB4A /* MessagesCollectionViewCell.xib */; };
 		81F015CE1BFF3D820007EB4A /* NewMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F015CC1BFF3D820007EB4A /* NewMessageViewController.m */; };
 		81F015CF1BFF3D820007EB4A /* NewMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81F015CD1BFF3D820007EB4A /* NewMessageViewController.xib */; };
-		E743386FDFC5B46BEBF4B101 /* libPods-BellabeatFeedback.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7610FAFA268ED29E2900AB91 /* libPods-BellabeatFeedback.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		01FFDCBB101604BE086E6B89 /* Pods-BellabeatFeedback.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BellabeatFeedback.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BellabeatFeedback/Pods-BellabeatFeedback.debug.xcconfig"; sourceTree = "<group>"; };
 		55AC717ECF2BAE0A0AD0985F /* Pods-BellabeatFeedback.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BellabeatFeedback.release.xcconfig"; path = "Pods/Target Support Files/Pods-BellabeatFeedback/Pods-BellabeatFeedback.release.xcconfig"; sourceTree = "<group>"; };
-		7610FAFA268ED29E2900AB91 /* libPods-BellabeatFeedback.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BellabeatFeedback.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		62254FB879A1DC76902A918F /* Pods_BellabeatFeedback.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BellabeatFeedback.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		811F33611BFE14AE00DE9402 /* BellabeatFeedback.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BellabeatFeedback.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		811F33651BFE14AE00DE9402 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		811F33671BFE14AE00DE9402 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -69,7 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E743386FDFC5B46BEBF4B101 /* libPods-BellabeatFeedback.a in Frameworks */,
+				74C7DFD1625A46C47A48C89A /* Pods_BellabeatFeedback.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,7 +190,7 @@
 		F9841FB9FD6F07C017ABEE45 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7610FAFA268ED29E2900AB91 /* libPods-BellabeatFeedback.a */,
+				62254FB879A1DC76902A918F /* Pods_BellabeatFeedback.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -207,6 +207,7 @@
 				811F335E1BFE14AE00DE9402 /* Frameworks */,
 				811F335F1BFE14AE00DE9402 /* Resources */,
 				F06B5A168B160A3471B76F0A /* Copy Pods Resources */,
+				668852937847642AF47F99EC /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -267,6 +268,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		668852937847642AF47F99EC /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BellabeatFeedback/Pods-BellabeatFeedback-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		7DFC7E22F755BC0DDACE6177 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -419,8 +435,9 @@
 			baseConfigurationReference = 01FFDCBB101604BE086E6B89 /* Pods-BellabeatFeedback.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = BellabeatFeedback/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bellabeat.BellabeatFeedback;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -432,8 +449,9 @@
 			baseConfigurationReference = 55AC717ECF2BAE0A0AD0985F /* Pods-BellabeatFeedback.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = BellabeatFeedback/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bellabeat.BellabeatFeedback;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -8,10 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@class RoomModel;
+
 #define kRoomCellIdentifier @"roomCell"
 
 @interface RoomsCollectionViewCell : UICollectionViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *roomTitleLabel;
+
+@property (nonatomic, strong) RoomModel *room;
 
 @end
