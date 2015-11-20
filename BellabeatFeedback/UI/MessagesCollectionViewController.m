@@ -170,4 +170,15 @@
     }
 }
 
+- (void)messageDataStore:(MessageDataStore *)dataStore didRemoveMessage:(MessageModel *)message {
+    NSUInteger index = [self.data indexOfObject:message];
+    
+    NSMutableArray *tempData = [self.data mutableCopy];
+    [tempData removeObject:message];
+    
+    self.data = [tempData copy];
+    
+    [self.collectionView deleteItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:index inSection:0]]];
+}
+
 @end

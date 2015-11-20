@@ -60,6 +60,17 @@
                 }
             }
         }];
+        
+        [self.messages observeEventType:FEventTypeChildRemoved withBlock:^(FDataSnapshot *snapshot) {
+            if (snapshot && snapshot.value != [NSNull null]) {
+                MessageModel *model = [weakSelf.data objectForKey:snapshot.key];
+                [weakSelf.data removeObjectForKey:model.key];
+                
+                if ([weakSelf.delegate respondsToSelector:@selector(messageDataStore:didRemoveMessage:)]) {
+                    [weakSelf.delegate messageDataStore:weakSelf didRemoveMessage:model];
+                }
+            }
+        }];
     }
     return self;
 }

@@ -17,6 +17,7 @@
 
 - (void)messageDataStore:(MessageDataStore *)dataStore didAddMessage:(MessageModel *)message;
 - (void)messageDataStore:(MessageDataStore *)dataStore didUpdateMessage:(MessageModel *)message;
+- (void)messageDataStore:(MessageDataStore *)dataStore didRemoveMessage:(MessageModel *)message;
 
 @end
 
