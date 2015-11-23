@@ -8,13 +8,15 @@
 
 #import "RoomsCollectionViewController.h"
 #import "RoomsCollectionViewCell.h"
+#import "LoadingCollectionViewFooterView.h"
 #import "OrderCollectionViewController.h"
 
 @interface RoomsCollectionViewController ()
 
 @property (nonatomic, strong) RoomDataStore *dataStore;
-
 @property (nonatomic, strong) NSMutableArray *data;
+
+@property (nonatomic, assign) BOOL didLoad;
 
 @end
 
@@ -46,6 +48,7 @@
     
     // Register cell classes
     [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([RoomsCollectionViewCell class]) bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:kRoomCellIdentifier];
+    [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([LoadingCollectionViewFooterView class]) bundle:[NSBundle mainBundle]] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:kLoadingViewIdentifier];
     
     self.title = @"Rooms";
 }
@@ -76,10 +79,22 @@
     return CGSizeMake(collectionView.frame.size.width, 100.0);
 }
 
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section {
+    return self.didLoad ? CGSizeZero : CGSizeMake(collectionView.frame.size.width, 77.0);
+}
+
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     RoomsCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kRoomCellIdentifier forIndexPath:indexPath];
     cell.room = [self.data objectAtIndex:indexPath.row];
     return cell;
+}
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+    if (kind == UICollectionElementKindSectionFooter) {
+        return [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:kLoadingViewIdentifier forIndexPath:indexPath];
+    }
+    
+    return [[UICollectionReusableView alloc] init];
 }
 
 #pragma mark <UICollectionViewDelegate>
@@ -98,6 +113,11 @@
     [self.data addObject:room];
     NSInteger newIndex = self.data.count - 1;
     [self.collectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:newIndex inSection:0]]];
+    
+    if (!self.didLoad) {
+        self.didLoad = YES;
+        [self.collectionViewLayout invalidateLayout];
+    }
 }
 
 @end

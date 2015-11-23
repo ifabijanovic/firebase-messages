@@ -9,6 +9,7 @@
 #import "MessagesCollectionViewController.h"
 #import "MessagesCollectionViewCell.h"
 #import "NewMessageViewController.h"
+#import "LoadingCollectionViewFooterView.h"
 
 @interface MessagesCollectionViewController ()
 
@@ -16,6 +17,7 @@
 @property (nonatomic, strong) NSMutableArray *data;
 
 @property (nonatomic, strong) UILabel *sizingLabel;
+@property (nonatomic, assign) BOOL didLoad;
 
 @end
 
@@ -53,6 +55,7 @@
     
     // Register cell classes
     [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([MessagesCollectionViewCell class]) bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:kMessageCellIdentifier];
+    [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([LoadingCollectionViewFooterView class]) bundle:[NSBundle mainBundle]] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:kLoadingViewIdentifier];
     
     UIBarButtonItem *newMessageButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(newMessageTapped:)];
     self.navigationItem.rightBarButtonItem = newMessageButton;
@@ -98,10 +101,22 @@
     return CGSizeMake(collectionView.frame.size.width, MAX(height, 92.0));
 }
 
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section {
+    return self.didLoad ? CGSizeZero : CGSizeMake(collectionView.frame.size.width, 77.0);
+}
+
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     MessagesCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kMessageCellIdentifier forIndexPath:indexPath];
     cell.message = [self.data objectAtIndex:indexPath.row];
     return cell;
+}
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+    if (kind == UICollectionElementKindSectionFooter) {
+        return [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:kLoadingViewIdentifier forIndexPath:indexPath];
+    }
+    
+    return [[UICollectionReusableView alloc] init];
 }
 
 #pragma mark - MessageDataStoreDelegate
@@ -110,6 +125,11 @@
     NSUInteger index = [self.dataStore.order indexForMessage:message inArray:self.data];
     [self.data insertObject:message atIndex:index];
     [self.collectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:index inSection:0]]];
+    
+    if (!self.didLoad) {
+        self.didLoad = YES;
+        [self.collectionViewLayout invalidateLayout];
+    }
 }
 
 - (void)messageDataStore:(MessageDataStore *)dataStore didUpdateMessage:(MessageModel *)message {
