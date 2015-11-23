@@ -7,6 +7,7 @@
 //
 
 #import "OrderCollectionViewCell.h"
+#import "MessageOrderModel.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
 @implementation OrderCollectionViewCell
@@ -15,6 +16,10 @@
     [super awakeFromNib];
     
     RAC(self.orderTitleLabel, text) = RACObserve(self, order.title);
+}
+
+- (void)dealloc {
+    NSLog(@"OrderCollectionViewCell dealloc");
 }
 
 @end

@@ -15,7 +15,7 @@
 @property (nonatomic, strong) Firebase *root;
 @property (nonatomic, strong) Firebase *rooms;
 
-@property (nonatomic, strong) NSMutableArray *data;
+@property (nonatomic, strong) NSMutableDictionary *data;
 
 @end
 
@@ -31,16 +31,40 @@
         self.root = root;
         self.rooms = [root childByAppendingPath:@"rooms"];
         
-        self.data = [NSMutableArray array];
+        self.data = [NSMutableDictionary dictionary];
+        
+        FQuery *query = [self.rooms queryOrderedByChild:@"name"];
         
         __weak typeof(self) weakSelf = self;
-        [self.rooms observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
+        [query observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
             if (snapshot.value && snapshot.value != [NSNull null]) {
                 RoomModel *model = [[RoomModel alloc] initWithKey:snapshot.key value:snapshot.value];
-                [weakSelf.data addObject:model];
+                [weakSelf.data setObject:model forKey:model.key];
                 
                 if ([weakSelf.delegate respondsToSelector:@selector(roomDataStore:didAddRoom:)]) {
                     [weakSelf.delegate roomDataStore:weakSelf didAddRoom:model];
+                }
+            }
+        }];
+        
+        [query observeEventType:FEventTypeChildChanged withBlock:^(FDataSnapshot *snapshot) {
+            if (snapshot.value && snapshot.value != [NSNull null]) {
+                RoomModel *model = [weakSelf.data objectForKey:snapshot.key];
+                [model updateWithDictionary:snapshot.value];
+                
+                if ([weakSelf.delegate respondsToSelector:@selector(roomDataStore:didUpdateRoom:)]) {
+                    [weakSelf.delegate roomDataStore:weakSelf didUpdateRoom:model];
+                }
+            }
+        }];
+        
+        [query observeEventType:FEventTypeChildRemoved withBlock:^(FDataSnapshot *snapshot) {
+            if (snapshot.value && snapshot.value != [NSNull null]) {
+                RoomModel *model = [weakSelf.data objectForKey:snapshot.key];
+                [weakSelf.data removeObjectForKey:model.key];
+                
+                if ([weakSelf.delegate respondsToSelector:@selector(roomDataStore:didRemoveRoom:)]) {
+                    [weakSelf.delegate roomDataStore:weakSelf didRemoveRoom:model];
                 }
             }
         }];
@@ -50,13 +74,11 @@
 
 - (void)dealloc {
     [self.rooms removeAllObservers];
+    
+    NSLog(@"RoomDataStore dealloc");
 }
 
 #pragma mark - Public methods
-
-- (NSArray<RoomModel *> *)allRooms {
-    return self.data;
-}
 
 - (MessageDataStore *)messageDataStoreForRoom:(RoomModel *)room order:(MessageOrderModel *)order {
     return [[MessageDataStore alloc] initWithRoot:self.root forRoom:room order:order];

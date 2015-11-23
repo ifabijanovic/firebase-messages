@@ -11,6 +11,9 @@
 
 @interface MessagesCollectionViewController : UICollectionViewController<MessageDataStoreDelegate, UICollectionViewDelegateFlowLayout>
 
+- (instancetype)initWithCoder:(NSCoder *)aDecoder NS_UNAVAILABLE;
+- (instancetype)initWithCollectionViewLayout:(UICollectionViewLayout *)layout NS_UNAVAILABLE;
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil NS_UNAVAILABLE;
 - (instancetype)initWithDataStore:(MessageDataStore *)dataStore NS_DESIGNATED_INITIALIZER;
 
 @end

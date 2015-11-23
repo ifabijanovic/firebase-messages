@@ -16,7 +16,10 @@
 
 @protocol RoomDataStoreDelegate <NSObject>
 
+@optional
 - (void)roomDataStore:(RoomDataStore *)dataStore didAddRoom:(RoomModel *)room;
+- (void)roomDataStore:(RoomDataStore *)dataStore didUpdateRoom:(RoomModel *)room;
+- (void)roomDataStore:(RoomDataStore *)dataStore didRemoveRoom:(RoomModel *)room;
 
 @end
 
@@ -26,8 +29,6 @@
 - (instancetype)initWithRoot:(Firebase *)root;
 
 @property (nonatomic, weak) id<RoomDataStoreDelegate> delegate;
-
-- (NSArray<RoomModel *> *)allRooms;
 
 - (MessageDataStore *)messageDataStoreForRoom:(RoomModel *)room order:(MessageOrderModel *)order;
 

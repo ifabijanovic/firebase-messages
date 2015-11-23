@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+#warning GLOBAL USER DECLARATION
+#define kCurrentUser @"u2"
+
 @class MessageDataStore;
 
 @interface MessageModel : NSObject
@@ -19,6 +22,7 @@
 @property (nonatomic, strong) NSDate *timestamp;
 @property (nonatomic, strong) NSMutableDictionary *votes;
 
+- (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithDataStore:(MessageDataStore *)dataStore NS_DESIGNATED_INITIALIZER;
 - (instancetype)initWithDataStore:(MessageDataStore *)dataStore key:(NSString *)key value:(NSDictionary *)dictionary NS_DESIGNATED_INITIALIZER;
 

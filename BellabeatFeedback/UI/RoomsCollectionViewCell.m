@@ -18,4 +18,8 @@
     RAC(self, roomTitleLabel.text) = RACObserve(self, room.name);
 }
 
+- (void)dealloc {
+    NSLog(@"RoomsCollectionViewCell dealloc");
+}
+
 @end

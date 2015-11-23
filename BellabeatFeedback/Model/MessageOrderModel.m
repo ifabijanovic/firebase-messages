@@ -11,6 +11,14 @@
 
 @implementation MessageOrderModel
 
+#pragma mark - Init
+
+- (void)dealloc {
+    NSLog(@"MessageOrderModel dealloc");
+}
+
+#pragma mark - Abstract methods
+
 - (FQuery *)queryForRef:(Firebase *)ref {
     return nil;
 }

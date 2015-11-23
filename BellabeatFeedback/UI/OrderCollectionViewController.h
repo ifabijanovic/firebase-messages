@@ -13,7 +13,9 @@
 
 @interface OrderCollectionViewController : UICollectionViewController <UICollectionViewDelegateFlowLayout>
 
-@property (nonatomic, strong) RoomModel *room;
-@property (nonatomic, strong) RoomDataStore *dataStore;
+- (instancetype)initWithCoder:(NSCoder *)aDecoder NS_UNAVAILABLE;
+- (instancetype)initWithCollectionViewLayout:(UICollectionViewLayout *)layout NS_UNAVAILABLE;
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil NS_UNAVAILABLE;
+- (instancetype)initWithRoomDataStore:(RoomDataStore *)dataStore room:(RoomModel *)room NS_DESIGNATED_INITIALIZER;
 
 @end

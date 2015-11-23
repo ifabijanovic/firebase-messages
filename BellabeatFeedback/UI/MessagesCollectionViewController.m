@@ -13,8 +13,9 @@
 @interface MessagesCollectionViewController ()
 
 @property (nonatomic, strong) MessageDataStore *dataStore;
-
 @property (nonatomic, strong) NSMutableArray *data;
+
+@property (nonatomic, strong) UILabel *sizingLabel;
 
 @end
 
@@ -31,6 +32,10 @@
         self.dataStore.delegate = self;
         
         self.data = [NSMutableArray array];
+        
+        self.sizingLabel = [[UILabel alloc] init];
+        self.sizingLabel.numberOfLines = 0;
+        self.sizingLabel.font = [UIFont systemFontOfSize:15.0];
     }
     return self;
 }
@@ -46,19 +51,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
     // Register cell classes
     [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([MessagesCollectionViewCell class]) bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:kMessageCellIdentifier];
     
     UIBarButtonItem *newMessageButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(newMessageTapped:)];
     self.navigationItem.rightBarButtonItem = newMessageButton;
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
@@ -72,6 +69,8 @@
     
     [self.collectionViewLayout invalidateLayout];
 }
+
+#pragma mark - Actions
 
 - (void)newMessageTapped:(id)sender {
     NewMessageViewController *vc = [[NewMessageViewController alloc] initWithDataStore:self.dataStore];
@@ -89,16 +88,13 @@
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UILabel *label = [[UILabel alloc] init];
-    label.preferredMaxLayoutWidth = collectionView.frame.size.width - 70;
-    label.numberOfLines = 0;
-    label.font = [UIFont systemFontOfSize:15.0];
+    self.sizingLabel.preferredMaxLayoutWidth = collectionView.frame.size.width - 70.0;
     MessageModel *model = [self.data objectAtIndex:indexPath.row];
-    label.text = model.message;
+    self.sizingLabel.text = model.message;
     
-    CGSize lblSize = [label intrinsicContentSize];
+    CGSize size = [self.sizingLabel intrinsicContentSize];
+    CGFloat height = size.height + 47.0;
     
-    CGFloat height = lblSize.height + 47.0;
     return CGSizeMake(collectionView.frame.size.width, MAX(height, 92.0));
 }
 

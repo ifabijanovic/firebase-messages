@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MessageOrderModel.h"
+
+@class MessageOrderModel;
 
 #define kOrderCellIdentifier @"orderCell"
 

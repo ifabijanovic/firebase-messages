@@ -1,22 +1,22 @@
 //
-//  HotMessageOrderModel.m
+//  TopMessageOrderModel.m
 //  BellabeatFeedback
 //
 //  Created by Ivan Fabijanović on 23/11/15.
 //  Copyright © 2015 Bellabeat. All rights reserved.
 //
 
-#import "HotMessageOrderModel.h"
+#import "TopMessageOrderModel.h"
 #import <Firebase/Firebase.h>
 
-@implementation HotMessageOrderModel
+@implementation TopMessageOrderModel
 
 #pragma mark - Init
 
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.title = @"Hot";
+        self.title = @"Top";
         self.limit = 50;
     }
     return self;

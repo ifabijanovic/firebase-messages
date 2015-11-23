@@ -11,11 +11,14 @@
 #import "RoomModel.h"
 #import "RoomDataStore.h"
 #import "MessageDataStore.h"
-#import "HotMessageOrderModel.h"
+#import "TopMessageOrderModel.h"
 #import "NewMessageOrderModel.h"
 #import "MessagesCollectionViewController.h"
 
 @interface OrderCollectionViewController ()
+
+@property (nonatomic, strong) RoomModel *room;
+@property (nonatomic, strong) RoomDataStore *dataStore;
 
 @property (nonatomic, strong) NSArray *orders;
 
@@ -23,25 +26,37 @@
 
 @implementation OrderCollectionViewController
 
+#pragma mark - Init
+
+- (instancetype)initWithRoomDataStore:(RoomDataStore *)dataStore room:(RoomModel *)room {
+    NSParameterAssert(dataStore);
+    NSParameterAssert(room);
+    
+    self = [super initWithNibName:NSStringFromClass([self class]) bundle:[NSBundle mainBundle]];
+    if (self) {
+        self.dataStore = dataStore;
+        self.room = room;
+        
+        self.title = room.name;
+        self.orders = @[
+                        [[TopMessageOrderModel alloc] init],
+                        [[NewMessageOrderModel alloc] init]
+                        ];
+    }
+    return self;
+}
+
+- (void)dealloc {
+    NSLog(@"OrderCollectionViewController dealloc");
+}
+
+#pragma mark - View lifecycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
     // Register cell classes
     [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([OrderCollectionViewCell class]) bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:kOrderCellIdentifier];
-    
-    self.title = self.room.name;
-    self.orders = @[
-                    [[HotMessageOrderModel alloc] init],
-                    [[NewMessageOrderModel alloc] init]
-                    ];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark <UICollectionViewDataSource>

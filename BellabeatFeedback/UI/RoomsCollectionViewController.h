@@ -11,6 +11,9 @@
 
 @interface RoomsCollectionViewController : UICollectionViewController<RoomDataStoreDelegate, UICollectionViewDelegateFlowLayout>
 
+- (instancetype)initWithCoder:(NSCoder *)aDecoder NS_UNAVAILABLE;
+- (instancetype)initWithCollectionViewLayout:(UICollectionViewLayout *)layout NS_UNAVAILABLE;
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil NS_UNAVAILABLE;
 - (instancetype)initWithDataStore:(RoomDataStore *)dataStore NS_DESIGNATED_INITIALIZER;
 
 @end

@@ -9,8 +9,6 @@
 #import "MessageModel.h"
 #import "MessageDataStore.h"
 
-#define kCurrentUser @"u2"
-
 @interface MessageModel()
 
 @property (nonatomic, weak) MessageDataStore *dataStore;
@@ -18,6 +16,8 @@
 @end
 
 @implementation MessageModel
+
+#pragma mark - Init
 
 - (instancetype)initWithDataStore:(MessageDataStore *)dataStore {
     NSParameterAssert(dataStore);
@@ -58,6 +58,8 @@
 - (void)dealloc {
     NSLog(@"Message %@ dealloc", self.key);
 }
+
+#pragma mark - Public methods
 
 - (void)updateWithDictionary:(NSDictionary *)dictionary {
     self.message = [dictionary objectForKey:@"message"];

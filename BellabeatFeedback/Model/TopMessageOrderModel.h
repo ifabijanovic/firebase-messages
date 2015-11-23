@@ -1,5 +1,5 @@
 //
-//  HotMessageOrderModel.h
+//  TopMessageOrderModel.h
 //  BellabeatFeedback
 //
 //  Created by Ivan Fabijanović on 23/11/15.
@@ -8,6 +8,6 @@
 
 #import "MessageOrderModel.h"
 
-@interface HotMessageOrderModel : MessageOrderModel
+@interface TopMessageOrderModel : MessageOrderModel
 
 @end

@@ -8,12 +8,13 @@
 
 #import "RoomsCollectionViewController.h"
 #import "RoomsCollectionViewCell.h"
-#import "RoomDataStore.h"
 #import "OrderCollectionViewController.h"
 
 @interface RoomsCollectionViewController ()
 
 @property (nonatomic, strong) RoomDataStore *dataStore;
+
+@property (nonatomic, strong) NSMutableArray *data;
 
 @end
 
@@ -28,25 +29,25 @@
     if (self) {
         self.dataStore = dataStore;
         self.dataStore.delegate = self;
+        
+        self.data = [NSMutableArray array];
     }
     return self;
 }
 
+- (void)dealloc {
+    NSLog(@"RoomsCollectionViewContorller dealloc");
+}
+
+#pragma mark - View lifecycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations
-    // self.clearsSelectionOnViewWillAppear = NO;
     
     // Register cell classes
     [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([RoomsCollectionViewCell class]) bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:kRoomCellIdentifier];
     
     self.title = @"Rooms";
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
@@ -68,7 +69,7 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.dataStore.allRooms.count;
+    return self.data.count;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -77,7 +78,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     RoomsCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kRoomCellIdentifier forIndexPath:indexPath];
-    cell.room = [self.dataStore.allRooms objectAtIndex:indexPath.row];
+    cell.room = [self.data objectAtIndex:indexPath.row];
     return cell;
 }
 
@@ -86,18 +87,17 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
     
-    OrderCollectionViewController *vc = [[OrderCollectionViewController alloc] initWithNibName:NSStringFromClass([OrderCollectionViewController class]) bundle:[NSBundle mainBundle]];
-    vc.room = [self.dataStore.allRooms objectAtIndex:indexPath.row];
-    vc.dataStore = self.dataStore;
-    
+    RoomModel *room = [self.data objectAtIndex:indexPath.row];
+    OrderCollectionViewController *vc = [[OrderCollectionViewController alloc] initWithRoomDataStore:self.dataStore room:room];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - RoomDataStoreDelegate
 
 - (void)roomDataStore:(RoomDataStore *)dataStore didAddRoom:(RoomModel *)room {
-    NSInteger numberOfItems = [self.collectionView numberOfItemsInSection:0];
-    [self.collectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:numberOfItems inSection:0]]];
+    [self.data addObject:room];
+    NSInteger newIndex = self.data.count - 1;
+    [self.collectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:newIndex inSection:0]]];
 }
 
 @end

@@ -17,4 +17,7 @@
 - (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithKey:(NSString *)key value:(NSDictionary *)dictionary NS_DESIGNATED_INITIALIZER;
 
+- (void)updateWithDictionary:(NSDictionary *)dictionary;
+- (NSDictionary *)serialize;
+
 @end

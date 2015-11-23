@@ -51,10 +51,7 @@
     [self.inputTextView becomeFirstResponder];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+#pragma mark - Actions
 
 - (void)saveTapped:(id)sender {
     self.message.message = self.inputTextView.text;
