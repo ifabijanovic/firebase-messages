@@ -28,6 +28,6 @@
 
 - (NSArray<RoomModel *> *)allRooms;
 
-- (MessageDataStore *)messageDataStoreForRoom:(RoomModel *)room;
+- (MessageDataStore *)messageDataStoreForRoom:(RoomModel *)room type:(NSString *)type;
 
 @end

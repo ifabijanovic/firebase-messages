@@ -24,7 +24,7 @@
 @interface MessageDataStore : NSObject
 
 - (instancetype)init NS_UNAVAILABLE;
-- (instancetype)initWithRoot:(Firebase *)root forRoom:(RoomModel *)room;
+- (instancetype)initWithRoot:(Firebase *)root forRoom:(RoomModel *)room type:(NSString *)type;
 
 @property (nonatomic, weak) id<MessageDataStoreDelegate> delegate;
 

@@ -19,6 +19,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     Firebase *rootRef = [[Firebase alloc] initWithUrl:@"https://bellabeat-feedback.firebaseio.com/"];
+//    [self generateSomeDataWithRoot:rootRef];
     RoomDataStore *roomDataStore = [[RoomDataStore alloc] initWithRoot:rootRef];
     
     RoomsCollectionViewController *root = [[RoomsCollectionViewController alloc] initWithDataStore:roomDataStore];
@@ -81,58 +82,54 @@
                                      }
                              },
                      @"messages": @{
-                             @"r1": @{
-                                     [[NSUUID UUID] UUIDString]: @{
-                                             @"sender": @"u1",
-                                             @"message": @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit amet velit ac turpis scelerisque mattis eu vitae lacus.",
-                                             @"timestamp": @([[NSDate date] timeIntervalSince1970]),
-                                             @"points": @(1),
-                                             @"votes": @{
-                                                     @"u1": @"u"
-                                                     }
-                                             },
-                                     [[NSUUID UUID] UUIDString]: @{
-                                             @"sender": @"u2",
-                                             @"message": @"Proin sapien orci, luctus at massa nec, faucibus molestie lectus.",
-                                             @"timestamp": @([[NSDate date] timeIntervalSince1970]),
-                                             @"points": @(1),
-                                             @"votes": @{
-                                                     @"u2": @"u"
-                                                     }
-                                             },
-                                     [[NSUUID UUID] UUIDString]: @{
-                                             @"sender": @"u3",
-                                             @"message": @"Integer mollis justo convallis neque tempor accumsan. Ut a viverra arcu. Sed in facilisis sem.",
-                                             @"timestamp": @([[NSDate date] timeIntervalSince1970]),
-                                             @"points": @(1),
-                                             @"votes": @{
-                                                     @"u3": @"u"
-                                                     }
-                                             }
-                                     },
-                             @"r2": @{
-                                     [[NSUUID UUID] UUIDString]: @{
-                                             @"sender": @"u3",
-                                             @"message": @"Nulla nec sagittis leo. Ut scelerisque quam a elit elementum egestas sed quis dui. Pellentesque sit amet augue dolor.",
-                                             @"timestamp": @([[NSDate date] timeIntervalSince1970]),
-                                             @"points": @(1),
-                                             @"votes": @{
-                                                     @"u3": @"u"
-                                                     }
-                                             },
-                                     [[NSUUID UUID] UUIDString]: @{
-                                             @"sender": @"u1",
-                                             @"message": @"Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer laoreet luctus turpis eu auctor. Morbi porta commodo magna nec feugiat.",
-                                             @"timestamp": @([[NSDate date] timeIntervalSince1970]),
-                                             @"points": @(1),
-                                             @"votes": @{
-                                                     @"u1": @"u"
-                                                     }
-                                             },
-                                     }
+                             @"r1": @{}
                              }
                      }];
     
+    Firebase *messages = [root childByAppendingPath:@"messages/r1"];
+    int numberOfMessages = 1000;
+    for (int i = 0; i < numberOfMessages; i++) {
+        [[messages childByAutoId] setValue:@{
+                                             @"sender": @"u1",
+                                             @"message": [self randomStringWithLength:50],
+                                             @"timestamp": @([self randomDate]),
+                                             @"points": @(arc4random_uniform(25)),
+                                             @"votes": @{
+                                                     @"u1": @"u"
+                                                     }
+                                             }];
+    }
+
+}
+
+NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+- (NSString *)randomStringWithLength:(int)len {
+    NSMutableString *randomString = [NSMutableString stringWithCapacity: len];
+    int nextSpace = arc4random_uniform(7) + 3;
+    
+    for (int i=0; i<len; i++) {
+        if (nextSpace == 0) {
+            nextSpace = arc4random_uniform(7) + 3;
+            [randomString appendString:@" "];
+        } else {
+            nextSpace--;
+        }
+        
+        [randomString appendFormat: @"%C", [letters characterAtIndex:arc4random_uniform([letters length])]];
+    }
+    
+    return randomString;
+}
+
+- (NSTimeInterval)randomDate {
+    int days = arc4random_uniform(7);
+    int hours = arc4random_uniform(24);
+    int minutes = arc4random_uniform(60);
+    
+    NSTimeInterval interval = (-days * 24*60*60) + (-hours * 60*60) + (-minutes * 60);
+    
+    return [[NSDate dateWithTimeIntervalSinceNow:interval] timeIntervalSince1970];
 }
 
 @end

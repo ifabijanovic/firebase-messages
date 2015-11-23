@@ -9,9 +9,7 @@
 #import "RoomsCollectionViewController.h"
 #import "RoomsCollectionViewCell.h"
 #import "RoomDataStore.h"
-
-#import "MessageDataStore.h"
-#import "MessagesCollectionViewController.h"
+#import "OrderCollectionViewController.h"
 
 @interface RoomsCollectionViewController ()
 
@@ -88,11 +86,10 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
     
-    RoomModel *room = [self.dataStore.allRooms objectAtIndex:indexPath.row];
-    MessageDataStore *messageDataStore = [self.dataStore messageDataStoreForRoom:room];
+    OrderCollectionViewController *vc = [[OrderCollectionViewController alloc] initWithNibName:NSStringFromClass([OrderCollectionViewController class]) bundle:[NSBundle mainBundle]];
+    vc.room = [self.dataStore.allRooms objectAtIndex:indexPath.row];
+    vc.dataStore = self.dataStore;
     
-    MessagesCollectionViewController *vc = [[MessagesCollectionViewController alloc] initWithDataStore:messageDataStore];
-    vc.title = room.name;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

@@ -23,7 +23,7 @@
 
 #pragma mark - Init
 
-- (instancetype)initWithRoot:(Firebase *)root forRoom:(RoomModel *)room {
+- (instancetype)initWithRoot:(Firebase *)root forRoom:(RoomModel *)room type:(NSString *)type {
     NSParameterAssert(root);
     NSParameterAssert(room);
     
@@ -37,7 +37,9 @@
         self.data = [NSMutableDictionary dictionary];
         
         __weak typeof(self) weakSelf = self;
-        [self.messages observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
+        
+        FQuery *query = [type isEqualToString:@"Hot"] ? [[self.messages queryOrderedByChild:@"points"] queryLimitedToLast:20] : [[self.messages queryOrderedByPriority] queryLimitedToLast:20];
+        [query observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
             if (snapshot.value && snapshot.value != [NSNull null]) {
                 MessageModel *model = [[MessageModel alloc] initWithDataStore:weakSelf key:snapshot.key value:snapshot.value];
                 [weakSelf.data setValue:model forKey:model.key];
@@ -48,7 +50,7 @@
             }
         }];
         
-        [self.messages observeEventType:FEventTypeChildChanged withBlock:^(FDataSnapshot *snapshot) {
+        [query observeEventType:FEventTypeChildChanged withBlock:^(FDataSnapshot *snapshot) {
             if (snapshot && snapshot.value != [NSNull null]) {
                 MessageModel *model = [weakSelf.data objectForKey:snapshot.key];
                 [model updateWithDictionary:snapshot.value];
@@ -59,7 +61,7 @@
             }
         }];
         
-        [self.messages observeEventType:FEventTypeChildRemoved withBlock:^(FDataSnapshot *snapshot) {
+        [query observeEventType:FEventTypeChildRemoved withBlock:^(FDataSnapshot *snapshot) {
             if (snapshot && snapshot.value != [NSNull null]) {
                 MessageModel *model = [weakSelf.data objectForKey:snapshot.key];
                 [weakSelf.data removeObjectForKey:model.key];

@@ -57,8 +57,8 @@
     return self.data;
 }
 
-- (MessageDataStore *)messageDataStoreForRoom:(RoomModel *)room {
-    return [[MessageDataStore alloc] initWithRoot:self.root forRoom:room];
+- (MessageDataStore *)messageDataStoreForRoom:(RoomModel *)room type:(NSString *)type {
+    return [[MessageDataStore alloc] initWithRoot:self.root forRoom:room type:type];
 }
 
 @end

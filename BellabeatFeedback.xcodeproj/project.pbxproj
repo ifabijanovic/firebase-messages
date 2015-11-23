@@ -12,6 +12,10 @@
 		811F33691BFE14AE00DE9402 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 811F33681BFE14AE00DE9402 /* AppDelegate.m */; };
 		811F33711BFE14AE00DE9402 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 811F33701BFE14AE00DE9402 /* Assets.xcassets */; };
 		811F33741BFE14AE00DE9402 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 811F33721BFE14AE00DE9402 /* LaunchScreen.storyboard */; };
+		8158AD6C1C03196100C0BF36 /* OrderCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8158AD6A1C03196100C0BF36 /* OrderCollectionViewController.m */; };
+		8158AD6D1C03196100C0BF36 /* OrderCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8158AD6B1C03196100C0BF36 /* OrderCollectionViewController.xib */; };
+		8158AD711C03197B00C0BF36 /* OrderCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8158AD6F1C03197B00C0BF36 /* OrderCollectionViewCell.m */; };
+		8158AD721C03197B00C0BF36 /* OrderCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8158AD701C03197B00C0BF36 /* OrderCollectionViewCell.xib */; };
 		81F015AA1BFF17A10007EB4A /* RoomModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F015A91BFF17A10007EB4A /* RoomModel.m */; };
 		81F015AD1BFF180A0007EB4A /* RoomDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F015AC1BFF180A0007EB4A /* RoomDataStore.m */; };
 		81F015B11BFF1BFD0007EB4A /* RoomsCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F015AF1BFF1BFD0007EB4A /* RoomsCollectionViewController.m */; };
@@ -39,6 +43,12 @@
 		811F33701BFE14AE00DE9402 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		811F33731BFE14AE00DE9402 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		811F33751BFE14AE00DE9402 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8158AD691C03196100C0BF36 /* OrderCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrderCollectionViewController.h; path = UI/OrderCollectionViewController.h; sourceTree = "<group>"; };
+		8158AD6A1C03196100C0BF36 /* OrderCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrderCollectionViewController.m; path = UI/OrderCollectionViewController.m; sourceTree = "<group>"; };
+		8158AD6B1C03196100C0BF36 /* OrderCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OrderCollectionViewController.xib; path = UI/OrderCollectionViewController.xib; sourceTree = "<group>"; };
+		8158AD6E1C03197B00C0BF36 /* OrderCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrderCollectionViewCell.h; path = UI/OrderCollectionViewCell.h; sourceTree = "<group>"; };
+		8158AD6F1C03197B00C0BF36 /* OrderCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrderCollectionViewCell.m; path = UI/OrderCollectionViewCell.m; sourceTree = "<group>"; };
+		8158AD701C03197B00C0BF36 /* OrderCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OrderCollectionViewCell.xib; path = UI/OrderCollectionViewCell.xib; sourceTree = "<group>"; };
 		81F015A81BFF17A10007EB4A /* RoomModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RoomModel.h; path = Model/RoomModel.h; sourceTree = "<group>"; };
 		81F015A91BFF17A10007EB4A /* RoomModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RoomModel.m; path = Model/RoomModel.m; sourceTree = "<group>"; };
 		81F015AB1BFF180A0007EB4A /* RoomDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RoomDataStore.h; path = Data/RoomDataStore.h; sourceTree = "<group>"; };
@@ -130,10 +140,24 @@
 		811F337B1BFE15AF00DE9402 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				8158AD681C03194900C0BF36 /* Order */,
 				81F015C41BFF2C9B0007EB4A /* Message */,
 				81F015C31BFF2C960007EB4A /* Room */,
 			);
 			name = UI;
+			sourceTree = "<group>";
+		};
+		8158AD681C03194900C0BF36 /* Order */ = {
+			isa = PBXGroup;
+			children = (
+				8158AD691C03196100C0BF36 /* OrderCollectionViewController.h */,
+				8158AD6A1C03196100C0BF36 /* OrderCollectionViewController.m */,
+				8158AD6B1C03196100C0BF36 /* OrderCollectionViewController.xib */,
+				8158AD6E1C03197B00C0BF36 /* OrderCollectionViewCell.h */,
+				8158AD6F1C03197B00C0BF36 /* OrderCollectionViewCell.m */,
+				8158AD701C03197B00C0BF36 /* OrderCollectionViewCell.xib */,
+			);
+			name = Order;
 			sourceTree = "<group>";
 		};
 		81F015A01BFE1B920007EB4A /* Data */ = {
@@ -257,7 +281,9 @@
 			files = (
 				81F015CF1BFF3D820007EB4A /* NewMessageViewController.xib in Resources */,
 				81F015C91BFF2CCF0007EB4A /* MessagesCollectionViewCell.xib in Resources */,
+				8158AD721C03197B00C0BF36 /* OrderCollectionViewCell.xib in Resources */,
 				811F33741BFE14AE00DE9402 /* LaunchScreen.storyboard in Resources */,
+				8158AD6D1C03196100C0BF36 /* OrderCollectionViewController.xib in Resources */,
 				81F015B21BFF1BFD0007EB4A /* RoomsCollectionViewController.xib in Resources */,
 				81F015BC1BFF254C0007EB4A /* MessagesCollectionViewController.xib in Resources */,
 				811F33711BFE14AE00DE9402 /* Assets.xcassets in Resources */,
@@ -327,8 +353,10 @@
 				81F015C21BFF25FD0007EB4A /* MessageModel.m in Sources */,
 				811F33691BFE14AE00DE9402 /* AppDelegate.m in Sources */,
 				81F015BB1BFF254C0007EB4A /* MessagesCollectionViewController.m in Sources */,
+				8158AD711C03197B00C0BF36 /* OrderCollectionViewCell.m in Sources */,
 				81F015B61BFF22F40007EB4A /* RoomsCollectionViewCell.m in Sources */,
 				81F015BF1BFF25610007EB4A /* MessageDataStore.m in Sources */,
+				8158AD6C1C03196100C0BF36 /* OrderCollectionViewController.m in Sources */,
 				81F015AD1BFF180A0007EB4A /* RoomDataStore.m in Sources */,
 				811F33661BFE14AE00DE9402 /* main.m in Sources */,
 			);
