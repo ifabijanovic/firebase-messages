@@ -7,7 +7,7 @@
 //
 
 #import "OrderCollectionViewCell.h"
-#import "MessageOrderModel.h"
+#import "MessageSorter.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
 @implementation OrderCollectionViewCell
@@ -15,7 +15,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    RAC(self.orderTitleLabel, text) = RACObserve(self, order.title);
+    RAC(self.orderTitleLabel, text) = RACObserve(self, sorter.title);
 }
 
 - (void)dealloc {

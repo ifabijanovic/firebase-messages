@@ -8,7 +8,7 @@
 
 #import "RoomDataStore.h"
 #import "MessageDataStore.h"
-#import "MessageOrderModel.h"
+#import "MessageSorter.h"
 
 @interface RoomDataStore()
 
@@ -80,8 +80,8 @@
 
 #pragma mark - Public methods
 
-- (MessageDataStore *)messageDataStoreForRoom:(RoomModel *)room order:(MessageOrderModel *)order {
-    return [[MessageDataStore alloc] initWithRoot:self.root forRoom:room order:order];
+- (MessageDataStore *)messageDataStoreForRoom:(RoomModel *)room sorter:(MessageSorter *)sorter {
+    return [[MessageDataStore alloc] initWithRoot:self.root forRoom:room sorter:sorter];
 }
 
 @end

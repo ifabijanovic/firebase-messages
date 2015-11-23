@@ -1,5 +1,5 @@
 //
-//  MessageOrderModel.h
+//  MessageSorter.h
 //  BellabeatFeedback
 //
 //  Created by Ivan Fabijanović on 23/11/15.
@@ -12,7 +12,7 @@
 @class Firebase;
 @class FQuery;
 
-@interface MessageOrderModel : NSObject
+@interface MessageSorter : NSObject
 
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, assign) int limit;

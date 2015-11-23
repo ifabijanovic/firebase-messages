@@ -12,7 +12,7 @@
 
 @class RoomDataStore;
 @class MessageDataStore;
-@class MessageOrderModel;
+@class MessageSorter;
 
 @protocol RoomDataStoreDelegate <NSObject>
 
@@ -30,6 +30,6 @@
 
 @property (nonatomic, weak) id<RoomDataStoreDelegate> delegate;
 
-- (MessageDataStore *)messageDataStoreForRoom:(RoomModel *)room order:(MessageOrderModel *)order;
+- (MessageDataStore *)messageDataStoreForRoom:(RoomModel *)room sorter:(MessageSorter *)sorter;
 
 @end

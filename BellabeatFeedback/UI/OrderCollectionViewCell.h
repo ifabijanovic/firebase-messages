@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class MessageOrderModel;
+@class MessageSorter;
 
 #define kOrderCellIdentifier @"orderCell"
 
@@ -16,6 +16,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *orderTitleLabel;
 
-@property (nonatomic, strong) MessageOrderModel *order;
+@property (nonatomic, strong) MessageSorter *sorter;
 
 @end

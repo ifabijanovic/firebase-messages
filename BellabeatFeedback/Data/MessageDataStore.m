@@ -16,7 +16,7 @@
 
 @property (nonatomic, strong) NSMutableDictionary *data;
 
-@property (nonatomic, strong, readwrite) MessageOrderModel *order;
+@property (nonatomic, strong, readwrite) MessageSorter *sorter;
 
 @end
 
@@ -24,15 +24,15 @@
 
 #pragma mark - Init
 
-- (instancetype)initWithRoot:(Firebase *)root forRoom:(RoomModel *)room order:(MessageOrderModel *)order {
+- (instancetype)initWithRoot:(Firebase *)root forRoom:(RoomModel *)room sorter:(MessageSorter *)sorter {
     NSParameterAssert(root);
     NSParameterAssert(room);
-    NSParameterAssert(order);
+    NSParameterAssert(sorter);
     
     self = [super init];
     if (self) {
         self.root = root;
-        self.order = order;
+        self.sorter = sorter;
         
         NSString *path = [NSString stringWithFormat:@"messages/%@", room.key];
         self.messages = [root childByAppendingPath:path];
@@ -41,7 +41,7 @@
         
         __weak typeof(self) weakSelf = self;
         
-        FQuery *query = [order queryForRef:self.messages];
+        FQuery *query = [sorter queryForRef:self.messages];
         
         [query observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
             if (snapshot.value && snapshot.value != [NSNull null]) {

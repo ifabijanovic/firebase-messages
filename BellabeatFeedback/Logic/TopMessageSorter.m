@@ -1,15 +1,15 @@
 //
-//  TopMessageOrderModel.m
+//  TopMessageSorter.m
 //  BellabeatFeedback
 //
 //  Created by Ivan Fabijanović on 23/11/15.
 //  Copyright © 2015 Bellabeat. All rights reserved.
 //
 
-#import "TopMessageOrderModel.h"
+#import "TopMessageSorter.h"
 #import <Firebase/Firebase.h>
 
-@implementation TopMessageOrderModel
+@implementation TopMessageSorter
 
 #pragma mark - Init
 

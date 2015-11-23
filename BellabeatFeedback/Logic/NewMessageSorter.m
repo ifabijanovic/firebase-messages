@@ -1,15 +1,15 @@
 //
-//  NewMessageOrderModel.m
+//  NewMessageSorter.m
 //  BellabeatFeedback
 //
 //  Created by Ivan Fabijanović on 23/11/15.
 //  Copyright © 2015 Bellabeat. All rights reserved.
 //
 
-#import "NewMessageOrderModel.h"
+#import "NewMessageSorter.h"
 #import <Firebase/Firebase.h>
 
-@implementation NewMessageOrderModel
+@implementation NewMessageSorter
 
 #pragma mark - Init
 

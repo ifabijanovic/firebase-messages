@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <Firebase/Firebase.h>
 #import "MessageModel.h"
-#import "MessageOrderModel.h"
+#import "MessageSorter.h"
 
 @class MessageDataStore;
 @class RoomModel;
@@ -25,9 +25,9 @@
 @interface MessageDataStore : NSObject
 
 - (instancetype)init NS_UNAVAILABLE;
-- (instancetype)initWithRoot:(Firebase *)root forRoom:(RoomModel *)room order:(MessageOrderModel *)order;
+- (instancetype)initWithRoot:(Firebase *)root forRoom:(RoomModel *)room sorter:(MessageSorter *)sorter;
 
-@property (nonatomic, strong, readonly) MessageOrderModel *order;
+@property (nonatomic, strong, readonly) MessageSorter *sorter;
 @property (nonatomic, weak) id<MessageDataStoreDelegate> delegate;
 
 - (MessageModel *)newMessage;

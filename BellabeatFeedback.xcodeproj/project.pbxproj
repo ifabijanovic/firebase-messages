@@ -19,9 +19,9 @@
 		819BD8A11C033A54000F75C3 /* LoadingCollectionViewFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 819BD8A01C033A54000F75C3 /* LoadingCollectionViewFooterView.m */; };
 		819BD8A31C033A63000F75C3 /* LoadingCollectionViewFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 819BD8A21C033A63000F75C3 /* LoadingCollectionViewFooterView.xib */; };
 		819BD8A61C033E84000F75C3 /* ModelBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 819BD8A51C033E84000F75C3 /* ModelBase.m */; };
-		819BD8AF1C033FA3000F75C3 /* MessageOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 819BD8AA1C033FA3000F75C3 /* MessageOrderModel.m */; };
-		819BD8B01C033FA3000F75C3 /* NewMessageOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 819BD8AC1C033FA3000F75C3 /* NewMessageOrderModel.m */; };
-		819BD8B11C033FA3000F75C3 /* TopMessageOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 819BD8AE1C033FA3000F75C3 /* TopMessageOrderModel.m */; };
+		819BD8AF1C033FA3000F75C3 /* MessageSorter.m in Sources */ = {isa = PBXBuildFile; fileRef = 819BD8AA1C033FA3000F75C3 /* MessageSorter.m */; };
+		819BD8B01C033FA3000F75C3 /* NewMessageSorter.m in Sources */ = {isa = PBXBuildFile; fileRef = 819BD8AC1C033FA3000F75C3 /* NewMessageSorter.m */; };
+		819BD8B11C033FA3000F75C3 /* TopMessageSorter.m in Sources */ = {isa = PBXBuildFile; fileRef = 819BD8AE1C033FA3000F75C3 /* TopMessageSorter.m */; };
 		81F015AA1BFF17A10007EB4A /* RoomModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F015A91BFF17A10007EB4A /* RoomModel.m */; };
 		81F015AD1BFF180A0007EB4A /* RoomDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F015AC1BFF180A0007EB4A /* RoomDataStore.m */; };
 		81F015B11BFF1BFD0007EB4A /* RoomsCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F015AF1BFF1BFD0007EB4A /* RoomsCollectionViewController.m */; };
@@ -60,12 +60,12 @@
 		819BD8A21C033A63000F75C3 /* LoadingCollectionViewFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoadingCollectionViewFooterView.xib; path = UI/LoadingCollectionViewFooterView.xib; sourceTree = "<group>"; };
 		819BD8A41C033E84000F75C3 /* ModelBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModelBase.h; path = Model/ModelBase.h; sourceTree = "<group>"; };
 		819BD8A51C033E84000F75C3 /* ModelBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModelBase.m; path = Model/ModelBase.m; sourceTree = "<group>"; };
-		819BD8A91C033FA3000F75C3 /* MessageOrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageOrderModel.h; path = Logic/MessageOrderModel.h; sourceTree = "<group>"; };
-		819BD8AA1C033FA3000F75C3 /* MessageOrderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MessageOrderModel.m; path = Logic/MessageOrderModel.m; sourceTree = "<group>"; };
-		819BD8AB1C033FA3000F75C3 /* NewMessageOrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewMessageOrderModel.h; path = Logic/NewMessageOrderModel.h; sourceTree = "<group>"; };
-		819BD8AC1C033FA3000F75C3 /* NewMessageOrderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewMessageOrderModel.m; path = Logic/NewMessageOrderModel.m; sourceTree = "<group>"; };
-		819BD8AD1C033FA3000F75C3 /* TopMessageOrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TopMessageOrderModel.h; path = Logic/TopMessageOrderModel.h; sourceTree = "<group>"; };
-		819BD8AE1C033FA3000F75C3 /* TopMessageOrderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TopMessageOrderModel.m; path = Logic/TopMessageOrderModel.m; sourceTree = "<group>"; };
+		819BD8A91C033FA3000F75C3 /* MessageSorter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageSorter.h; path = Logic/MessageSorter.h; sourceTree = "<group>"; };
+		819BD8AA1C033FA3000F75C3 /* MessageSorter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MessageSorter.m; path = Logic/MessageSorter.m; sourceTree = "<group>"; };
+		819BD8AB1C033FA3000F75C3 /* NewMessageSorter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewMessageSorter.h; path = Logic/NewMessageSorter.h; sourceTree = "<group>"; };
+		819BD8AC1C033FA3000F75C3 /* NewMessageSorter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewMessageSorter.m; path = Logic/NewMessageSorter.m; sourceTree = "<group>"; };
+		819BD8AD1C033FA3000F75C3 /* TopMessageSorter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TopMessageSorter.h; path = Logic/TopMessageSorter.h; sourceTree = "<group>"; };
+		819BD8AE1C033FA3000F75C3 /* TopMessageSorter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TopMessageSorter.m; path = Logic/TopMessageSorter.m; sourceTree = "<group>"; };
 		81F015A81BFF17A10007EB4A /* RoomModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RoomModel.h; path = Model/RoomModel.h; sourceTree = "<group>"; };
 		81F015A91BFF17A10007EB4A /* RoomModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RoomModel.m; path = Model/RoomModel.m; sourceTree = "<group>"; };
 		81F015AB1BFF180A0007EB4A /* RoomDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RoomDataStore.h; path = Data/RoomDataStore.h; sourceTree = "<group>"; };
@@ -192,12 +192,12 @@
 		819BD8A81C033F56000F75C3 /* Logic */ = {
 			isa = PBXGroup;
 			children = (
-				819BD8A91C033FA3000F75C3 /* MessageOrderModel.h */,
-				819BD8AA1C033FA3000F75C3 /* MessageOrderModel.m */,
-				819BD8AB1C033FA3000F75C3 /* NewMessageOrderModel.h */,
-				819BD8AC1C033FA3000F75C3 /* NewMessageOrderModel.m */,
-				819BD8AD1C033FA3000F75C3 /* TopMessageOrderModel.h */,
-				819BD8AE1C033FA3000F75C3 /* TopMessageOrderModel.m */,
+				819BD8A91C033FA3000F75C3 /* MessageSorter.h */,
+				819BD8AA1C033FA3000F75C3 /* MessageSorter.m */,
+				819BD8AB1C033FA3000F75C3 /* NewMessageSorter.h */,
+				819BD8AC1C033FA3000F75C3 /* NewMessageSorter.m */,
+				819BD8AD1C033FA3000F75C3 /* TopMessageSorter.h */,
+				819BD8AE1C033FA3000F75C3 /* TopMessageSorter.m */,
 			);
 			name = Logic;
 			sourceTree = "<group>";
@@ -391,16 +391,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				819BD8AF1C033FA3000F75C3 /* MessageOrderModel.m in Sources */,
+				819BD8AF1C033FA3000F75C3 /* MessageSorter.m in Sources */,
 				81F015C81BFF2CCF0007EB4A /* MessagesCollectionViewCell.m in Sources */,
 				81F015B11BFF1BFD0007EB4A /* RoomsCollectionViewController.m in Sources */,
 				81F015CE1BFF3D820007EB4A /* NewMessageViewController.m in Sources */,
-				819BD8B11C033FA3000F75C3 /* TopMessageOrderModel.m in Sources */,
+				819BD8B11C033FA3000F75C3 /* TopMessageSorter.m in Sources */,
 				819BD8A11C033A54000F75C3 /* LoadingCollectionViewFooterView.m in Sources */,
 				81F015AA1BFF17A10007EB4A /* RoomModel.m in Sources */,
 				81F015C21BFF25FD0007EB4A /* MessageModel.m in Sources */,
 				811F33691BFE14AE00DE9402 /* AppDelegate.m in Sources */,
-				819BD8B01C033FA3000F75C3 /* NewMessageOrderModel.m in Sources */,
+				819BD8B01C033FA3000F75C3 /* NewMessageSorter.m in Sources */,
 				81F015BB1BFF254C0007EB4A /* MessagesCollectionViewController.m in Sources */,
 				8158AD711C03197B00C0BF36 /* OrderCollectionViewCell.m in Sources */,
 				81F015B61BFF22F40007EB4A /* RoomsCollectionViewCell.m in Sources */,

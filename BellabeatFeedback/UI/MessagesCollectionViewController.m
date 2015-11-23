@@ -122,7 +122,7 @@
 #pragma mark - MessageDataStoreDelegate
 
 - (void)messageDataStore:(MessageDataStore *)dataStore didAddMessage:(MessageModel *)message {
-    NSUInteger index = [self.dataStore.order indexForMessage:message inArray:self.data];
+    NSUInteger index = [self.dataStore.sorter indexForMessage:message inArray:self.data];
     [self.data insertObject:message atIndex:index];
     [self.collectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:index inSection:0]]];
     
@@ -134,7 +134,7 @@
 
 - (void)messageDataStore:(MessageDataStore *)dataStore didUpdateMessage:(MessageModel *)message {
     NSUInteger oldIndex = [self.data indexOfObject:message];
-    NSUInteger newIndex = [self.dataStore.order indexForMessage:message inArray:self.data];
+    NSUInteger newIndex = [self.dataStore.sorter indexForMessage:message inArray:self.data];
     
     if (newIndex != oldIndex) {
         [self.collectionView moveItemAtIndexPath:[NSIndexPath indexPathForItem:oldIndex inSection:0] toIndexPath:[NSIndexPath indexPathForItem:newIndex inSection:0]];

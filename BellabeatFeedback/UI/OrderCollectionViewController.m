@@ -11,8 +11,8 @@
 #import "RoomModel.h"
 #import "RoomDataStore.h"
 #import "MessageDataStore.h"
-#import "TopMessageOrderModel.h"
-#import "NewMessageOrderModel.h"
+#import "TopMessageSorter.h"
+#import "NewMessageSorter.h"
 #import "MessagesCollectionViewController.h"
 
 @interface OrderCollectionViewController ()
@@ -20,7 +20,7 @@
 @property (nonatomic, strong) RoomModel *room;
 @property (nonatomic, strong) RoomDataStore *dataStore;
 
-@property (nonatomic, strong) NSArray *orders;
+@property (nonatomic, strong) NSArray *sorters;
 
 @end
 
@@ -38,9 +38,9 @@
         self.room = room;
         
         self.title = room.name;
-        self.orders = @[
-                        [[TopMessageOrderModel alloc] init],
-                        [[NewMessageOrderModel alloc] init]
+        self.sorters = @[
+                        [[TopMessageSorter alloc] init],
+                        [[NewMessageSorter alloc] init]
                         ];
     }
     return self;
@@ -66,7 +66,7 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.orders.count;
+    return self.sorters.count;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -75,7 +75,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     OrderCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kOrderCellIdentifier forIndexPath:indexPath];
-    cell.order = [self.orders objectAtIndex:indexPath.row];
+    cell.sorter = [self.sorters objectAtIndex:indexPath.row];
     return cell;
 }
 
@@ -84,11 +84,11 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
     
-    MessageOrderModel *order = [self.orders objectAtIndex:indexPath.row];
-    MessageDataStore *messageDataStore = [self.dataStore messageDataStoreForRoom:self.room order:order];
+    MessageSorter *sorter = [self.sorters objectAtIndex:indexPath.row];
+    MessageDataStore *messageDataStore = [self.dataStore messageDataStoreForRoom:self.room sorter:sorter];
     
     MessagesCollectionViewController *vc = [[MessagesCollectionViewController alloc] initWithDataStore:messageDataStore];
-    vc.title = [NSString stringWithFormat:@"%@ - %@", self.room.name, order.title];
+    vc.title = [NSString stringWithFormat:@"%@ - %@", self.room.name, sorter.title];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
