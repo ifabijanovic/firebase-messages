@@ -11,9 +11,13 @@
 #import "RoomModel.h"
 #import "RoomDataStore.h"
 #import "MessageDataStore.h"
+#import "HotMessageOrderModel.h"
+#import "NewMessageOrderModel.h"
 #import "MessagesCollectionViewController.h"
 
 @interface OrderCollectionViewController ()
+
+@property (nonatomic, strong) NSArray *orders;
 
 @end
 
@@ -29,6 +33,10 @@
     [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([OrderCollectionViewCell class]) bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:kOrderCellIdentifier];
     
     self.title = self.room.name;
+    self.orders = @[
+                    [[HotMessageOrderModel alloc] init],
+                    [[NewMessageOrderModel alloc] init]
+                    ];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -43,7 +51,7 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 2;
+    return self.orders.count;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -52,12 +60,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     OrderCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kOrderCellIdentifier forIndexPath:indexPath];
-    if (indexPath.row == 0) {
-        cell.orderTitleLabel.text = @"Hot";
-    } else {
-        cell.orderTitleLabel.text = @"New";
-    }
-    
+    cell.order = [self.orders objectAtIndex:indexPath.row];
     return cell;
 }
 
@@ -66,11 +69,11 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
     
-    NSString *type = indexPath.row == 0 ? @"Hot" : @"New";
-    MessageDataStore *messageDataStore = [self.dataStore messageDataStoreForRoom:self.room type:type];
+    MessageOrderModel *order = [self.orders objectAtIndex:indexPath.row];
+    MessageDataStore *messageDataStore = [self.dataStore messageDataStoreForRoom:self.room order:order];
     
     MessagesCollectionViewController *vc = [[MessagesCollectionViewController alloc] initWithDataStore:messageDataStore];
-    vc.title = [NSString stringWithFormat:@"%@ - %@", self.room.name, type];
+    vc.title = [NSString stringWithFormat:@"%@ - %@", self.room.name, order.title];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

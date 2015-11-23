@@ -12,6 +12,7 @@
 
 @class RoomDataStore;
 @class MessageDataStore;
+@class MessageOrderModel;
 
 @protocol RoomDataStoreDelegate <NSObject>
 
@@ -28,6 +29,6 @@
 
 - (NSArray<RoomModel *> *)allRooms;
 
-- (MessageDataStore *)messageDataStoreForRoom:(RoomModel *)room type:(NSString *)type;
+- (MessageDataStore *)messageDataStoreForRoom:(RoomModel *)room order:(MessageOrderModel *)order;
 
 @end

@@ -7,11 +7,14 @@
 //
 
 #import "OrderCollectionViewCell.h"
+#import <ReactiveCocoa/ReactiveCocoa.h>
 
 @implementation OrderCollectionViewCell
 
 - (void)awakeFromNib {
-    // Initialization code
+    [super awakeFromNib];
+    
+    RAC(self.orderTitleLabel, text) = RACObserve(self, order.title);
 }
 
 @end

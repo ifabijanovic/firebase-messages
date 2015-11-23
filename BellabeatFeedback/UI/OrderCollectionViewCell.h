@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MessageOrderModel.h"
 
 #define kOrderCellIdentifier @"orderCell"
 
 @interface OrderCollectionViewCell : UICollectionViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *orderTitleLabel;
+
+@property (nonatomic, strong) MessageOrderModel *order;
 
 @end

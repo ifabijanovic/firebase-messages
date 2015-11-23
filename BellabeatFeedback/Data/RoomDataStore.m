@@ -8,6 +8,7 @@
 
 #import "RoomDataStore.h"
 #import "MessageDataStore.h"
+#import "MessageOrderModel.h"
 
 @interface RoomDataStore()
 
@@ -57,8 +58,8 @@
     return self.data;
 }
 
-- (MessageDataStore *)messageDataStoreForRoom:(RoomModel *)room type:(NSString *)type {
-    return [[MessageDataStore alloc] initWithRoot:self.root forRoom:room type:type];
+- (MessageDataStore *)messageDataStoreForRoom:(RoomModel *)room order:(MessageOrderModel *)order {
+    return [[MessageDataStore alloc] initWithRoot:self.root forRoom:room order:order];
 }
 
 @end

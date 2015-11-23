@@ -16,6 +16,9 @@
 		8158AD6D1C03196100C0BF36 /* OrderCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8158AD6B1C03196100C0BF36 /* OrderCollectionViewController.xib */; };
 		8158AD711C03197B00C0BF36 /* OrderCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8158AD6F1C03197B00C0BF36 /* OrderCollectionViewCell.m */; };
 		8158AD721C03197B00C0BF36 /* OrderCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8158AD701C03197B00C0BF36 /* OrderCollectionViewCell.xib */; };
+		8158AD781C03238E00C0BF36 /* MessageOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8158AD771C03238E00C0BF36 /* MessageOrderModel.m */; };
+		8158AD7B1C03240B00C0BF36 /* HotMessageOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8158AD7A1C03240B00C0BF36 /* HotMessageOrderModel.m */; };
+		8158AD7E1C03257800C0BF36 /* NewMessageOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8158AD7D1C03257800C0BF36 /* NewMessageOrderModel.m */; };
 		81F015AA1BFF17A10007EB4A /* RoomModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F015A91BFF17A10007EB4A /* RoomModel.m */; };
 		81F015AD1BFF180A0007EB4A /* RoomDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F015AC1BFF180A0007EB4A /* RoomDataStore.m */; };
 		81F015B11BFF1BFD0007EB4A /* RoomsCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F015AF1BFF1BFD0007EB4A /* RoomsCollectionViewController.m */; };
@@ -49,6 +52,12 @@
 		8158AD6E1C03197B00C0BF36 /* OrderCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrderCollectionViewCell.h; path = UI/OrderCollectionViewCell.h; sourceTree = "<group>"; };
 		8158AD6F1C03197B00C0BF36 /* OrderCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrderCollectionViewCell.m; path = UI/OrderCollectionViewCell.m; sourceTree = "<group>"; };
 		8158AD701C03197B00C0BF36 /* OrderCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OrderCollectionViewCell.xib; path = UI/OrderCollectionViewCell.xib; sourceTree = "<group>"; };
+		8158AD761C03238E00C0BF36 /* MessageOrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageOrderModel.h; path = Model/MessageOrderModel.h; sourceTree = "<group>"; };
+		8158AD771C03238E00C0BF36 /* MessageOrderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MessageOrderModel.m; path = Model/MessageOrderModel.m; sourceTree = "<group>"; };
+		8158AD791C03240B00C0BF36 /* HotMessageOrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HotMessageOrderModel.h; path = Model/HotMessageOrderModel.h; sourceTree = "<group>"; };
+		8158AD7A1C03240B00C0BF36 /* HotMessageOrderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HotMessageOrderModel.m; path = Model/HotMessageOrderModel.m; sourceTree = "<group>"; };
+		8158AD7C1C03257800C0BF36 /* NewMessageOrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewMessageOrderModel.h; path = Model/NewMessageOrderModel.h; sourceTree = "<group>"; };
+		8158AD7D1C03257800C0BF36 /* NewMessageOrderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewMessageOrderModel.m; path = Model/NewMessageOrderModel.m; sourceTree = "<group>"; };
 		81F015A81BFF17A10007EB4A /* RoomModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RoomModel.h; path = Model/RoomModel.h; sourceTree = "<group>"; };
 		81F015A91BFF17A10007EB4A /* RoomModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RoomModel.m; path = Model/RoomModel.m; sourceTree = "<group>"; };
 		81F015AB1BFF180A0007EB4A /* RoomDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RoomDataStore.h; path = Data/RoomDataStore.h; sourceTree = "<group>"; };
@@ -178,6 +187,12 @@
 				81F015A91BFF17A10007EB4A /* RoomModel.m */,
 				81F015C01BFF25FD0007EB4A /* MessageModel.h */,
 				81F015C11BFF25FD0007EB4A /* MessageModel.m */,
+				8158AD761C03238E00C0BF36 /* MessageOrderModel.h */,
+				8158AD771C03238E00C0BF36 /* MessageOrderModel.m */,
+				8158AD791C03240B00C0BF36 /* HotMessageOrderModel.h */,
+				8158AD7A1C03240B00C0BF36 /* HotMessageOrderModel.m */,
+				8158AD7C1C03257800C0BF36 /* NewMessageOrderModel.h */,
+				8158AD7D1C03257800C0BF36 /* NewMessageOrderModel.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -346,6 +361,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8158AD7B1C03240B00C0BF36 /* HotMessageOrderModel.m in Sources */,
 				81F015C81BFF2CCF0007EB4A /* MessagesCollectionViewCell.m in Sources */,
 				81F015B11BFF1BFD0007EB4A /* RoomsCollectionViewController.m in Sources */,
 				81F015CE1BFF3D820007EB4A /* NewMessageViewController.m in Sources */,
@@ -356,7 +372,9 @@
 				8158AD711C03197B00C0BF36 /* OrderCollectionViewCell.m in Sources */,
 				81F015B61BFF22F40007EB4A /* RoomsCollectionViewCell.m in Sources */,
 				81F015BF1BFF25610007EB4A /* MessageDataStore.m in Sources */,
+				8158AD781C03238E00C0BF36 /* MessageOrderModel.m in Sources */,
 				8158AD6C1C03196100C0BF36 /* OrderCollectionViewController.m in Sources */,
+				8158AD7E1C03257800C0BF36 /* NewMessageOrderModel.m in Sources */,
 				81F015AD1BFF180A0007EB4A /* RoomDataStore.m in Sources */,
 				811F33661BFE14AE00DE9402 /* main.m in Sources */,
 			);

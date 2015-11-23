@@ -14,7 +14,7 @@
 
 @property (nonatomic, strong) MessageDataStore *dataStore;
 
-@property (nonatomic, strong) NSArray *data;
+@property (nonatomic, strong) NSMutableArray *data;
 
 @end
 
@@ -30,7 +30,7 @@
         self.dataStore = dataStore;
         self.dataStore.delegate = self;
         
-        self.data = [NSArray array];
+        self.data = [NSMutableArray array];
     }
     return self;
 }
@@ -108,59 +108,17 @@
     return cell;
 }
 
-#pragma mark <UICollectionViewDelegate>
-
-/*
-// Uncomment this method to specify if the specified item should be highlighted during tracking
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
-	return YES;
-}
-*/
-
-/*
-// Uncomment this method to specify if the specified item should be selected
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-*/
-
-/*
-// Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath {
-	return NO;
-}
-
-- (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	return NO;
-}
-
-- (void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	
-}
-*/
-
 #pragma mark - MessageDataStoreDelegate
 
 - (void)messageDataStore:(MessageDataStore *)dataStore didAddMessage:(MessageModel *)message {
-    NSMutableArray *tempData = [self.data mutableCopy];
-    [tempData addObject:message];
-    
-    NSSortDescriptor *byPointsDesc = [NSSortDescriptor sortDescriptorWithKey:@"points" ascending:NO];
-    NSSortDescriptor *byTimestamp = [NSSortDescriptor sortDescriptorWithKey:@"timestamp" ascending:NO];
-    self.data = [tempData sortedArrayUsingDescriptors:@[byPointsDesc, byTimestamp]];
-    
-    NSUInteger index = [self.data indexOfObject:message];
+    NSUInteger index = [self.dataStore.order indexForMessage:message inArray:self.data];
+    [self.data insertObject:message atIndex:index];
     [self.collectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:index inSection:0]]];
 }
 
 - (void)messageDataStore:(MessageDataStore *)dataStore didUpdateMessage:(MessageModel *)message {
     NSUInteger oldIndex = [self.data indexOfObject:message];
-    
-    NSSortDescriptor *byPointsDesc = [NSSortDescriptor sortDescriptorWithKey:@"points" ascending:NO];
-    NSSortDescriptor *byTimestamp = [NSSortDescriptor sortDescriptorWithKey:@"timestamp" ascending:NO];
-    self.data = [self.data sortedArrayUsingDescriptors:@[byPointsDesc, byTimestamp]];
-    
-    NSUInteger newIndex = [self.data indexOfObject:message];
+    NSUInteger newIndex = [self.dataStore.order indexForMessage:message inArray:self.data];
     
     if (newIndex != oldIndex) {
         [self.collectionView moveItemAtIndexPath:[NSIndexPath indexPathForItem:oldIndex inSection:0] toIndexPath:[NSIndexPath indexPathForItem:newIndex inSection:0]];
@@ -169,12 +127,8 @@
 
 - (void)messageDataStore:(MessageDataStore *)dataStore didRemoveMessage:(MessageModel *)message {
     NSUInteger index = [self.data indexOfObject:message];
-    
-    NSMutableArray *tempData = [self.data mutableCopy];
-    [tempData removeObject:message];
-    
-    self.data = [tempData copy];
-    
+    [self.data removeObject:message];
+
     [self.collectionView deleteItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:index inSection:0]]];
 }
 

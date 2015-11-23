@@ -7,7 +7,6 @@
 //
 
 #import "MessageDataStore.h"
-#import "MessageModel.h"
 #import "RoomModel.h"
 
 @interface MessageDataStore()
@@ -17,19 +16,23 @@
 
 @property (nonatomic, strong) NSMutableDictionary *data;
 
+@property (nonatomic, strong, readwrite) MessageOrderModel *order;
+
 @end
 
 @implementation MessageDataStore
 
 #pragma mark - Init
 
-- (instancetype)initWithRoot:(Firebase *)root forRoom:(RoomModel *)room type:(NSString *)type {
+- (instancetype)initWithRoot:(Firebase *)root forRoom:(RoomModel *)room order:(MessageOrderModel *)order {
     NSParameterAssert(root);
     NSParameterAssert(room);
+    NSParameterAssert(order);
     
     self = [super init];
     if (self) {
         self.root = root;
+        self.order = order;
         
         NSString *path = [NSString stringWithFormat:@"messages/%@", room.key];
         self.messages = [root childByAppendingPath:path];
@@ -38,7 +41,8 @@
         
         __weak typeof(self) weakSelf = self;
         
-        FQuery *query = [type isEqualToString:@"Hot"] ? [[self.messages queryOrderedByChild:@"points"] queryLimitedToLast:20] : [[self.messages queryOrderedByPriority] queryLimitedToLast:20];
+        FQuery *query = [order queryForRef:self.messages];
+        
         [query observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
             if (snapshot.value && snapshot.value != [NSNull null]) {
                 MessageModel *model = [[MessageModel alloc] initWithDataStore:weakSelf key:snapshot.key value:snapshot.value];
