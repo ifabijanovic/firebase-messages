@@ -30,6 +30,7 @@
 
 @property (nonatomic, weak) id<RoomDataStoreDelegate> delegate;
 
-- (MessageDataStore *)messageDataStoreForRoom:(RoomModel *)room sorter:(MessageSorter *)sorter;
+- (MessageDataStore *)messageDataStoreForRoom:(RoomModel *)room userId:(NSString *)userId;
+- (MessageDataStore *)messageDataStoreForRoom:(RoomModel *)room sorter:(MessageSorter *)sorter userId:(NSString *)userId;
 
 @end

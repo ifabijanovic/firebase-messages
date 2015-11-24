@@ -29,10 +29,10 @@
         [weakSelf updateButtonAppearance];
     }];
     [[self.upvoteButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        [weakSelf.message upvote];
+        [weakSelf.message upvoteForUserId:weakSelf.userId];
     }];
     [[self.downvoteButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        [weakSelf.message downvote];
+        [weakSelf.message downvoteForUserId:weakSelf.userId];
     }];
 }
 
@@ -43,10 +43,10 @@
 #pragma mark - Private methods
 
 - (void)updateButtonAppearance {
-    if ([self.message didUpvote]) {
+    if ([self.message didUpvoteForUserId:self.userId]) {
         [self.upvoteButton setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
         [self.downvoteButton setTitleColor:[UIColor colorWithRed:0 green:122.0/255.0 blue:1.0 alpha:1.0] forState:UIControlStateNormal];
-    } else if ([self.message didDownvote]) {
+    } else if ([self.message didDownvoteForUserId:self.userId]) {
         [self.downvoteButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
         [self.upvoteButton setTitleColor:[UIColor colorWithRed:0 green:122.0/255.0 blue:1.0 alpha:1.0] forState:UIControlStateNormal];
     } else {

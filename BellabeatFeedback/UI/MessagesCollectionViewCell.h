@@ -21,5 +21,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *downvoteButton;
 
 @property (nonatomic, strong) MessageModel *message;
+@property (nonatomic, copy) NSString *userId;
 
 @end

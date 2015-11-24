@@ -12,11 +12,11 @@
 @interface MessageDataStore()
 
 @property (nonatomic, strong) Firebase *root;
-@property (nonatomic, strong) Firebase *messages;
-
-@property (nonatomic, strong) NSMutableDictionary *data;
-
 @property (nonatomic, strong, readwrite) MessageSorter *sorter;
+@property (nonatomic, copy) NSString *userId;
+
+@property (nonatomic, strong) Firebase *messages;
+@property (nonatomic, strong) NSMutableDictionary *data;
 
 @end
 
@@ -24,15 +24,17 @@
 
 #pragma mark - Init
 
-- (instancetype)initWithRoot:(Firebase *)root forRoom:(RoomModel *)room sorter:(MessageSorter *)sorter {
+- (instancetype)initWithRoot:(Firebase *)root forRoom:(RoomModel *)room sorter:(MessageSorter *)sorter userId:(NSString *)userId {
     NSParameterAssert(root);
     NSParameterAssert(room);
     NSParameterAssert(sorter);
+    NSParameterAssert(userId);
     
     self = [super init];
     if (self) {
         self.root = root;
         self.sorter = sorter;
+        self.userId = userId;
         
         NSString *path = [NSString stringWithFormat:@"messages/%@", room.key];
         self.messages = [root childByAppendingPath:path];
@@ -89,7 +91,7 @@
 #pragma mark - Public methods
 
 - (MessageModel *)newMessage {
-    return [[MessageModel alloc] initWithDataStore:self];
+    return [[MessageModel alloc] initWithDataStore:self senderId:self.userId];
 }
 
 - (void)saveMessage:(MessageModel *)message {

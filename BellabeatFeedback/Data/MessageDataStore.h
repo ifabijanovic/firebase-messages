@@ -16,6 +16,7 @@
 
 @protocol MessageDataStoreDelegate <NSObject>
 
+@optional
 - (void)messageDataStore:(MessageDataStore *)dataStore didAddMessage:(MessageModel *)message;
 - (void)messageDataStore:(MessageDataStore *)dataStore didUpdateMessage:(MessageModel *)message;
 - (void)messageDataStore:(MessageDataStore *)dataStore didRemoveMessage:(MessageModel *)message;
@@ -25,7 +26,7 @@
 @interface MessageDataStore : NSObject
 
 - (instancetype)init NS_UNAVAILABLE;
-- (instancetype)initWithRoot:(Firebase *)root forRoom:(RoomModel *)room sorter:(MessageSorter *)sorter;
+- (instancetype)initWithRoot:(Firebase *)root forRoom:(RoomModel *)room sorter:(MessageSorter *)sorter userId:(NSString *)userId;
 
 @property (nonatomic, strong, readonly) MessageSorter *sorter;
 @property (nonatomic, weak) id<MessageDataStoreDelegate> delegate;

@@ -9,6 +9,7 @@
 #import "RoomDataStore.h"
 #import "MessageDataStore.h"
 #import "MessageSorter.h"
+#import "TopMessageSorter.h"
 
 @interface RoomDataStore()
 
@@ -80,8 +81,13 @@
 
 #pragma mark - Public methods
 
-- (MessageDataStore *)messageDataStoreForRoom:(RoomModel *)room sorter:(MessageSorter *)sorter {
-    return [[MessageDataStore alloc] initWithRoot:self.root forRoom:room sorter:sorter];
+- (MessageDataStore *)messageDataStoreForRoom:(RoomModel *)room userId:(NSString *)userId {
+    TopMessageSorter *sorter = [[TopMessageSorter alloc] init];
+    return [self messageDataStoreForRoom:room sorter:sorter userId:userId];
+}
+
+- (MessageDataStore *)messageDataStoreForRoom:(RoomModel *)room sorter:(MessageSorter *)sorter userId:(NSString *)userId {
+    return [[MessageDataStore alloc] initWithRoot:self.root forRoom:room sorter:sorter userId:userId];
 }
 
 @end

@@ -10,6 +10,8 @@
 #import <Firebase/Firebase.h>
 #import "RoomsCollectionViewController.h"
 
+#define kTestUserId     @"u2"
+
 @interface AppDelegate ()
 
 @end
@@ -22,7 +24,7 @@
 //    [self generateSomeDataWithRoot:rootRef];
     RoomDataStore *roomDataStore = [[RoomDataStore alloc] initWithRoot:rootRef];
     
-    RoomsCollectionViewController *root = [[RoomsCollectionViewController alloc] initWithDataStore:roomDataStore];
+    RoomsCollectionViewController *root = [[RoomsCollectionViewController alloc] initWithDataStore:roomDataStore userId:kTestUserId];
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:root];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -116,7 +118,7 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
             nextSpace--;
         }
         
-        [randomString appendFormat: @"%C", [letters characterAtIndex:arc4random_uniform([letters length])]];
+        [randomString appendFormat: @"%C", [letters characterAtIndex:arc4random_uniform((unsigned int)[letters length])]];
     }
     
     return randomString;

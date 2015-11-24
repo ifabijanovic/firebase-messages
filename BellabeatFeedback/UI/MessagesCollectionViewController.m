@@ -14,6 +14,8 @@
 @interface MessagesCollectionViewController ()
 
 @property (nonatomic, strong) MessageDataStore *dataStore;
+@property (nonatomic, copy) NSString *userId;
+
 @property (nonatomic, strong) NSMutableArray *data;
 
 @property (nonatomic, strong) UILabel *sizingLabel;
@@ -25,13 +27,15 @@
 
 #pragma mark - Init
 
-- (instancetype)initWithDataStore:(MessageDataStore *)dataStore {
+- (instancetype)initWithDataStore:(MessageDataStore *)dataStore userId:(NSString *)userId {
     NSParameterAssert(dataStore);
+    NSParameterAssert(userId);
     
     self = [super initWithNibName:NSStringFromClass([self class]) bundle:[NSBundle mainBundle]];
     if (self) {
         self.dataStore = dataStore;
         self.dataStore.delegate = self;
+        self.userId = userId;
         
         self.data = [NSMutableArray array];
         
@@ -107,6 +111,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     MessagesCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kMessageCellIdentifier forIndexPath:indexPath];
+    cell.userId = self.userId;
     cell.message = [self.data objectAtIndex:indexPath.row];
     return cell;
 }
@@ -129,15 +134,6 @@
     if (!self.didLoad) {
         self.didLoad = YES;
         [self.collectionViewLayout invalidateLayout];
-    }
-}
-
-- (void)messageDataStore:(MessageDataStore *)dataStore didUpdateMessage:(MessageModel *)message {
-    NSUInteger oldIndex = [self.data indexOfObject:message];
-    NSUInteger newIndex = [self.dataStore.sorter indexForMessage:message inArray:self.data];
-    
-    if (newIndex != oldIndex) {
-        [self.collectionView moveItemAtIndexPath:[NSIndexPath indexPathForItem:oldIndex inSection:0] toIndexPath:[NSIndexPath indexPathForItem:newIndex inSection:0]];
     }
 }
 

@@ -12,10 +12,6 @@
 		811F33691BFE14AE00DE9402 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 811F33681BFE14AE00DE9402 /* AppDelegate.m */; };
 		811F33711BFE14AE00DE9402 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 811F33701BFE14AE00DE9402 /* Assets.xcassets */; };
 		811F33741BFE14AE00DE9402 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 811F33721BFE14AE00DE9402 /* LaunchScreen.storyboard */; };
-		8158AD6C1C03196100C0BF36 /* OrderCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8158AD6A1C03196100C0BF36 /* OrderCollectionViewController.m */; };
-		8158AD6D1C03196100C0BF36 /* OrderCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8158AD6B1C03196100C0BF36 /* OrderCollectionViewController.xib */; };
-		8158AD711C03197B00C0BF36 /* OrderCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8158AD6F1C03197B00C0BF36 /* OrderCollectionViewCell.m */; };
-		8158AD721C03197B00C0BF36 /* OrderCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8158AD701C03197B00C0BF36 /* OrderCollectionViewCell.xib */; };
 		819BD8A11C033A54000F75C3 /* LoadingCollectionViewFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 819BD8A01C033A54000F75C3 /* LoadingCollectionViewFooterView.m */; };
 		819BD8A31C033A63000F75C3 /* LoadingCollectionViewFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 819BD8A21C033A63000F75C3 /* LoadingCollectionViewFooterView.xib */; };
 		819BD8A61C033E84000F75C3 /* ModelBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 819BD8A51C033E84000F75C3 /* ModelBase.m */; };
@@ -49,12 +45,6 @@
 		811F33701BFE14AE00DE9402 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		811F33731BFE14AE00DE9402 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		811F33751BFE14AE00DE9402 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8158AD691C03196100C0BF36 /* OrderCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrderCollectionViewController.h; path = UI/OrderCollectionViewController.h; sourceTree = "<group>"; };
-		8158AD6A1C03196100C0BF36 /* OrderCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrderCollectionViewController.m; path = UI/OrderCollectionViewController.m; sourceTree = "<group>"; };
-		8158AD6B1C03196100C0BF36 /* OrderCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OrderCollectionViewController.xib; path = UI/OrderCollectionViewController.xib; sourceTree = "<group>"; };
-		8158AD6E1C03197B00C0BF36 /* OrderCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrderCollectionViewCell.h; path = UI/OrderCollectionViewCell.h; sourceTree = "<group>"; };
-		8158AD6F1C03197B00C0BF36 /* OrderCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrderCollectionViewCell.m; path = UI/OrderCollectionViewCell.m; sourceTree = "<group>"; };
-		8158AD701C03197B00C0BF36 /* OrderCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OrderCollectionViewCell.xib; path = UI/OrderCollectionViewCell.xib; sourceTree = "<group>"; };
 		819BD89F1C033A54000F75C3 /* LoadingCollectionViewFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadingCollectionViewFooterView.h; path = UI/LoadingCollectionViewFooterView.h; sourceTree = "<group>"; };
 		819BD8A01C033A54000F75C3 /* LoadingCollectionViewFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoadingCollectionViewFooterView.m; path = UI/LoadingCollectionViewFooterView.m; sourceTree = "<group>"; };
 		819BD8A21C033A63000F75C3 /* LoadingCollectionViewFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoadingCollectionViewFooterView.xib; path = UI/LoadingCollectionViewFooterView.xib; sourceTree = "<group>"; };
@@ -159,24 +149,10 @@
 			isa = PBXGroup;
 			children = (
 				819BD89E1C033A2D000F75C3 /* Generic */,
-				8158AD681C03194900C0BF36 /* Order */,
 				81F015C41BFF2C9B0007EB4A /* Message */,
 				81F015C31BFF2C960007EB4A /* Room */,
 			);
 			name = UI;
-			sourceTree = "<group>";
-		};
-		8158AD681C03194900C0BF36 /* Order */ = {
-			isa = PBXGroup;
-			children = (
-				8158AD691C03196100C0BF36 /* OrderCollectionViewController.h */,
-				8158AD6A1C03196100C0BF36 /* OrderCollectionViewController.m */,
-				8158AD6B1C03196100C0BF36 /* OrderCollectionViewController.xib */,
-				8158AD6E1C03197B00C0BF36 /* OrderCollectionViewCell.h */,
-				8158AD6F1C03197B00C0BF36 /* OrderCollectionViewCell.m */,
-				8158AD701C03197B00C0BF36 /* OrderCollectionViewCell.xib */,
-			);
-			name = Order;
 			sourceTree = "<group>";
 		};
 		819BD89E1C033A2D000F75C3 /* Generic */ = {
@@ -326,9 +302,7 @@
 				81F015CF1BFF3D820007EB4A /* NewMessageViewController.xib in Resources */,
 				819BD8A31C033A63000F75C3 /* LoadingCollectionViewFooterView.xib in Resources */,
 				81F015C91BFF2CCF0007EB4A /* MessagesCollectionViewCell.xib in Resources */,
-				8158AD721C03197B00C0BF36 /* OrderCollectionViewCell.xib in Resources */,
 				811F33741BFE14AE00DE9402 /* LaunchScreen.storyboard in Resources */,
-				8158AD6D1C03196100C0BF36 /* OrderCollectionViewController.xib in Resources */,
 				81F015B21BFF1BFD0007EB4A /* RoomsCollectionViewController.xib in Resources */,
 				81F015BC1BFF254C0007EB4A /* MessagesCollectionViewController.xib in Resources */,
 				811F33711BFE14AE00DE9402 /* Assets.xcassets in Resources */,
@@ -402,11 +376,9 @@
 				811F33691BFE14AE00DE9402 /* AppDelegate.m in Sources */,
 				819BD8B01C033FA3000F75C3 /* NewMessageSorter.m in Sources */,
 				81F015BB1BFF254C0007EB4A /* MessagesCollectionViewController.m in Sources */,
-				8158AD711C03197B00C0BF36 /* OrderCollectionViewCell.m in Sources */,
 				81F015B61BFF22F40007EB4A /* RoomsCollectionViewCell.m in Sources */,
 				81F015BF1BFF25610007EB4A /* MessageDataStore.m in Sources */,
 				819BD8A61C033E84000F75C3 /* ModelBase.m in Sources */,
-				8158AD6C1C03196100C0BF36 /* OrderCollectionViewController.m in Sources */,
 				81F015AD1BFF180A0007EB4A /* RoomDataStore.m in Sources */,
 				811F33661BFE14AE00DE9402 /* main.m in Sources */,
 			);

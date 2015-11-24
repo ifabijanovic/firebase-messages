@@ -9,13 +9,16 @@
 #import "RoomsCollectionViewController.h"
 #import "RoomsCollectionViewCell.h"
 #import "LoadingCollectionViewFooterView.h"
-#import "OrderCollectionViewController.h"
+
+#import "MessageDataStore.h"
+#import "MessagesCollectionViewController.h"
 
 @interface RoomsCollectionViewController ()
 
 @property (nonatomic, strong) RoomDataStore *dataStore;
-@property (nonatomic, strong) NSMutableArray *data;
+@property (nonatomic, copy) NSString *userId;
 
+@property (nonatomic, strong) NSMutableArray *data;
 @property (nonatomic, assign) BOOL didLoad;
 
 @end
@@ -24,13 +27,15 @@
 
 #pragma mark - Init
 
-- (instancetype)initWithDataStore:(RoomDataStore *)dataStore {
+- (instancetype)initWithDataStore:(RoomDataStore *)dataStore userId:(NSString *)userId {
     NSParameterAssert(dataStore);
+    NSParameterAssert(userId);
     
     self = [super initWithNibName:NSStringFromClass([self class]) bundle:[NSBundle mainBundle]];
     if (self) {
         self.dataStore = dataStore;
         self.dataStore.delegate = self;
+        self.userId = userId;
         
         self.data = [NSMutableArray array];
     }
@@ -103,8 +108,10 @@
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
     
     RoomModel *room = [self.data objectAtIndex:indexPath.row];
-    OrderCollectionViewController *vc = [[OrderCollectionViewController alloc] initWithRoomDataStore:self.dataStore room:room];
-    [self.navigationController pushViewController:vc animated:YES];
+    MessageDataStore *messageDataSource = [self.dataStore messageDataStoreForRoom:room userId:self.userId];
+    
+    MessagesCollectionViewController *messagesViewController = [[MessagesCollectionViewController alloc] initWithDataStore:messageDataSource userId:self.userId];
+    [self.navigationController pushViewController:messagesViewController animated:YES];
 }
 
 #pragma mark - RoomDataStoreDelegate
@@ -118,6 +125,12 @@
         self.didLoad = YES;
         [self.collectionViewLayout invalidateLayout];
     }
+}
+
+- (void)roomDataStore:(RoomDataStore *)dataStore didRemoveRoom:(RoomModel *)room {
+    NSUInteger index = [self.data indexOfObject:room];
+    [self.data removeObject:room];
+    [self.collectionView deleteItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:index inSection:0]]];
 }
 
 @end

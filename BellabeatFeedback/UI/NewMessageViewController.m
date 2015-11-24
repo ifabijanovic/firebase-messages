@@ -25,7 +25,7 @@
     self = [super initWithNibName:NSStringFromClass([self class]) bundle:[NSBundle mainBundle]];
     if (self) {
         self.dataStore = dataStore;
-        self.message = [[MessageModel alloc] initWithDataStore:self.dataStore];
+        self.message = [dataStore newMessage];
     }
     return self;
 }
